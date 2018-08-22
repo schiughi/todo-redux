@@ -19,6 +19,9 @@ class App extends React.Component {
         <Button priority="primary" onClick={this.caution}>
           primary
         </Button>
+        <Button priority="secondary" onClick={this.caution}>
+          secondary
+        </Button>
       </div>
     );
   }
