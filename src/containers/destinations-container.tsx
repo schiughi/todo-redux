@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { destinationActions } from "src/actions/destination-actions";
-import { Destinations } from "src/components/templates/destinations-template";
+import { Destinations } from "src/components/templates/destinations";
 import { AppState } from "src/store";
 import { Action } from "typescript-fsa";
 

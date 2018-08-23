@@ -1,7 +1,7 @@
 import * as React from "react";
 import { BrowserRouter as Router, Link, Route } from "react-router-dom";
 import NavigationBar from "src/components/organisms/navigation-bar";
-import Destinations from "src/containers/destinations-page";
+import Destinations from "src/containers/destinations-container";
 import Home from "src/containers/home-page";
 
 class App extends React.Component {
