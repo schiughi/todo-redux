@@ -4,7 +4,8 @@
   "rules": {
     "prettier": true,
     "interface-name": false,
-    "jsx-boolean-value": false
+    "jsx-boolean-value": false,
+    "object-literal-sort-keys": false
   },
   "linterOptions": {
     "exclude": [
