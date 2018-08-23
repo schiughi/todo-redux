@@ -1,21 +1,33 @@
 import * as React from "react";
-import { Button } from "react-toolbox/lib/button";
-import * as style from "./App.css";
-import logo from "./logo.svg";
+import { BrowserRouter as Router, Link, Route } from "react-router-dom";
+import NavigationBar from "src/components/organisms/navigation-bar";
+
+const Home = () => (
+  <div>
+    <h2>Home</h2>
+  </div>
+);
+
+const About = () => (
+  <div>
+    <h2>About</h2>
+  </div>
+);
 
 class App extends React.Component {
   public render() {
     return (
-      <div className={style.App}>
-        <header className={style.AppHeader}>
-          <img src={logo} className={style.AppLogo} alt="logo" />
-          <h1 className={style.AppTitle}>Welcome to React</h1>
-        </header>
-        <p className={style.AppIntro}>
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Button icon="bookmark" label="Bookmark" raised primary />
-      </div>
+      <Router>
+        <React.Fragment>
+          <NavigationBar>
+            <Link to="/">Home</Link>
+            <Link to="/about">About</Link>
+          </NavigationBar>
+
+          <Route exact path="/" component={Home} />
+          <Route path="/about" component={About} />
+        </React.Fragment>
+      </Router>
     );
   }
 }
