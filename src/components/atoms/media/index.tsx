@@ -15,7 +15,7 @@ function mediaFactory(name: string) {
 }
 
 const Body = mediaFactory("body");
-const Img = mediaFactory("img");
+const Headig = mediaFactory("heading");
 const Container = mediaFactory("container");
 
-export { Body, Img, Container };
+export { Body, Headig, Container };
