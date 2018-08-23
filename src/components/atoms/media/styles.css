@@ -2,11 +2,17 @@
   display: flex;
 }
 
-.body {
+.content {
   flex: 1;
   min-width: 0;
+  display: flex;
+  flex-flow: column wrap;
 }
 
-.heading {
+.avatar {
+  align-self: center;
+}
+
+.action {
   align-self: center;
 }

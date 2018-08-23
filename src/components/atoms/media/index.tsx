@@ -14,8 +14,9 @@ function mediaFactory(name: string) {
   );
 }
 
-const Body = mediaFactory("body");
-const Headig = mediaFactory("heading");
+const Content = mediaFactory("content");
+const Avatar = mediaFactory("avatar");
+const Action = mediaFactory("action");
 const Container = mediaFactory("container");
 
-export { Body, Headig, Container };
+export { Content, Avatar, Action, Container };
