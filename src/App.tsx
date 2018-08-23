@@ -1,5 +1,5 @@
 import * as React from "react";
-import Button from "src/components/atoms/Button";
+import { Button } from "react-toolbox/lib/button";
 import * as style from "./App.css";
 import logo from "./logo.svg";
 
@@ -14,20 +14,9 @@ class App extends React.Component {
         <p className={style.AppIntro}>
           To get started, edit <code>src/App.tsx</code> and save to reload.
         </p>
-        <Button onClick={this.caution}>default</Button>
-
-        <Button priority="primary" onClick={this.caution}>
-          primary
-        </Button>
-        <Button priority="secondary" onClick={this.caution}>
-          secondary
-        </Button>
+        <Button icon="bookmark" label="Bookmark" raised primary />
       </div>
     );
-  }
-
-  private caution() {
-    alert("aaaaaaaaaaaaa");
   }
 }
 
