@@ -5,28 +5,24 @@ import { Destinations } from "src/components/templates/destinations";
 import { AppState } from "src/store";
 import { Action } from "typescript-fsa";
 
+export interface Recorder {
+  id: number;
+  time: number;
+}
+
 export interface DestinationsActions {
   onCreate: (v: string) => Action<string>;
   onStart: (v: number) => Action<number>;
+  onRecord: (v: Recorder) => Action<Recorder>;
   onStop: (v: number) => Action<number>;
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
-  let timer: NodeJS.Timer;
   return {
     onCreate: (v: string) => dispatch(destinationActions.addTask(v)),
-    onStart: (v: number) => {
-      clearInterval(timer);
-      timer = setInterval(
-        () => dispatch(destinationActions.recordTask({ id: v, time: 1 })),
-        1000
-      );
-      dispatch(destinationActions.startTask(v));
-    },
-    onStop: (v: number) => {
-      clearInterval(timer);
-      dispatch(destinationActions.stopTask(v));
-    }
+    onStart: (v: number) => dispatch(destinationActions.startTask(v)),
+    onRecord: (v: Recorder) => dispatch(destinationActions.recordTask(v)),
+    onStop: (v: number) => dispatch(destinationActions.stopTask(v))
   };
 }
 

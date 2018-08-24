@@ -11,11 +11,13 @@ export interface ListItemProps {
   totalTime: number;
   onStart: (e: any) => any;
   onStop: (e: any) => any;
+  onRecord: (e: any) => any;
 }
 
 const ListItem: React.SFC<ListItemProps> = props => {
-  const toggle = () =>
-    props.isDoing ? props.onStop(props.id) : props.onStart(props.id);
+  const handleStart = () => props.onStart(props.id);
+  const handleStop = () => props.onStop(props.id);
+  const handleChange = () => props.onRecord({ id: props.id, time: 1 });
   return (
     <Media.Container className={styles.item}>
       <Media.Content>
@@ -23,9 +25,11 @@ const ListItem: React.SFC<ListItemProps> = props => {
       </Media.Content>
       <Media.Action>
         <Stopwatch
-          isDoing={props.isDoing}
-          onClick={toggle}
-          totalTime={props.totalTime}
+          isRunning={props.isDoing}
+          onStart={handleStart}
+          onChange={handleChange}
+          onStop={handleStop}
+          time={props.totalTime}
         />
       </Media.Action>
     </Media.Container>

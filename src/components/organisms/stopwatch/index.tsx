@@ -4,20 +4,37 @@ import PlayButton from "src/components/molecules/play-button";
 import * as styles from "./styles.css";
 
 export interface StopwatchProps {
-  isDoing: boolean;
-  onClick: (e: any) => any;
-  totalTime: number;
+  isRunning: boolean;
+  interval?: number;
+  onStart: () => any;
+  onStop: () => any;
+  onChange: () => any;
+  time: number;
 }
 
+let timer: NodeJS.Timer;
+
 const Stopwatch: React.SFC<StopwatchProps> = ({
-  isDoing,
-  onClick,
-  totalTime
-}) => (
-  <div className={styles.container}>
-    <PlayButton playing={isDoing} onClick={onClick} />
-    <ElapsedTime time={totalTime} />
-  </div>
-);
+  isRunning,
+  time,
+  interval = 1000,
+  ...props
+}) => {
+  const handleClick = (e: any) => {
+    clearInterval(timer);
+    if (isRunning) {
+      props.onStop();
+    } else {
+      timer = setInterval(() => props.onChange(), interval);
+      props.onStart();
+    }
+  };
+  return (
+    <div className={styles.container}>
+      <PlayButton playing={isRunning} onClick={handleClick} />
+      <ElapsedTime time={time} />
+    </div>
+  );
+};
 
 export default Stopwatch;

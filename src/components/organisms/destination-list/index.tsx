@@ -7,6 +7,7 @@ export interface DestinationList {
   destinations: Destination[];
   onStart: (id: number) => any;
   onStop: (id: number) => any;
+  onRecord: (recorder: any) => any;
 }
 const DestinationList: React.SFC<DestinationList> = ({
   destinations,
