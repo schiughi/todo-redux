@@ -5,7 +5,7 @@ import { DestinationsActions } from "src/containers/destinations-container";
 import { DestinationsState } from "src/states/destinations-state";
 import * as styles from "./styles.css";
 
-type DestinationsProps = DestinationsState & DestinationsActions;
+export type DestinationsProps = DestinationsState & DestinationsActions;
 
 export const Destinations: React.SFC<DestinationsProps> = (
   props: DestinationsProps

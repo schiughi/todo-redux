@@ -6,14 +6,27 @@ import { AppState } from "src/store";
 import { Action } from "typescript-fsa";
 
 export interface DestinationsActions {
-  addTask: (v: string) => Action<string>;
-  toggleTask: (v: number) => Action<number>;
+  onCreate: (v: string) => Action<string>;
+  onStart: (v: number) => Action<number>;
+  onStop: (v: number) => Action<number>;
 }
 
 function mapDispatchToProps(dispatch: Dispatch) {
+  let timer: NodeJS.Timer;
   return {
-    addTask: (v: string) => dispatch(destinationActions.addTask(v)),
-    toggleTask: (v: number) => dispatch(destinationActions.toggleTask(v))
+    onCreate: (v: string) => dispatch(destinationActions.addTask(v)),
+    onStart: (v: number) => {
+      clearInterval(timer);
+      timer = setInterval(
+        () => dispatch(destinationActions.recordTask({ id: v, time: 1 })),
+        1000
+      );
+      dispatch(destinationActions.startTask(v));
+    },
+    onStop: (v: number) => {
+      clearInterval(timer);
+      dispatch(destinationActions.stopTask(v));
+    }
   };
 }
 
