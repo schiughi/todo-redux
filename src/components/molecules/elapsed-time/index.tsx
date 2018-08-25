@@ -2,6 +2,8 @@ import * as moment from "moment";
 import "moment-duration-format";
 import * as React from "react";
 import Title from "src/components/atoms/title";
+import * as styles from "./styles.css";
+import classNames from "classnames";
 
 export interface ElapsedTimeProps {
   time: number;
@@ -21,9 +23,10 @@ const ElapsedTime: React.SFC<ElapsedTimeProps> = ({
   time,
   unit = "seconds",
   format = "HH:mm:ss",
+  className,
   ...props
 }) => (
-  <Title level={5} {...props}>
+  <Title level={5} className={classNames(styles.time, className)} {...props}>
     {moment.duration(time, unit).format(format, {
       trim: false
     })}
