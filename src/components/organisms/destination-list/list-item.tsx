@@ -1,4 +1,5 @@
 import * as React from "react";
+import { Avatar } from "react-toolbox/lib/avatar";
 import * as Media from "src/components/atoms/media";
 import Caption from "src/components/atoms/caption";
 import Title from "src/components/atoms/title";
@@ -23,6 +24,9 @@ const ListItem: React.SFC<ListItemProps> = props => {
   const handleChange = () => props.onRecord({ id: props.id, time: 1 });
   return (
     <Media.Container className={styles.item}>
+      <Media.Avatar>
+        <Avatar style={{ backgroundColor: "deepskyblue" }} icon="grade" />
+      </Media.Avatar>
       <Media.Content>
         <Title>{props.title}</Title>
         <Caption>
