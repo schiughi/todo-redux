@@ -2,13 +2,9 @@ import { connect } from "react-redux";
 import { Dispatch } from "redux";
 import { destinationActions } from "src/actions/destination-actions";
 import { Destinations } from "src/components/templates/destinations";
+import { Recorder } from "src/states/destinations-state";
 import { AppState } from "src/store";
 import { Action } from "typescript-fsa";
-
-export interface Recorder {
-  id: number;
-  time: number;
-}
 
 export interface DestinationsActions {
   onCreate: (v: string) => Action<string>;

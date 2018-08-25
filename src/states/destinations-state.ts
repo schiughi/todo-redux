@@ -1,6 +1,11 @@
 import { destinationActions } from "src/actions/destination-actions";
 import { reducerWithInitialState } from "typescript-fsa-reducers";
 
+export interface Recorder {
+  id: number;
+  time: number;
+}
+
 export interface Destination {
   id: number;
   title: string;
@@ -83,7 +88,7 @@ export const destinationsReducer = reducerWithInitialState(initialState)
   )
   .case(
     destinationActions.recordTask,
-    (state: DestinationsState, payload: any): DestinationsState => {
+    (state: DestinationsState, payload: Recorder): DestinationsState => {
       return {
         ...state,
         destinations: state.destinations.map(it => recordTask(it, payload))
