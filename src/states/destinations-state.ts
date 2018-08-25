@@ -11,6 +11,7 @@ export interface Destination {
   title: string;
   isDoing: boolean;
   totalTime: number;
+  goal: number;
 }
 
 export interface DestinationsState {
@@ -23,12 +24,13 @@ const initialState: DestinationsState = {
       id: 0,
       title: "write code everyday",
       isDoing: false,
-      totalTime: 0
+      totalTime: 0,
+      goal: 1800
     }
   ]
 };
 
-const startTask = (destination: Destination, id: number): Destination => {
+const toggleTask = (destination: Destination, id: number): Destination => {
   if (destination.id === id) {
     return {
       ...destination,
@@ -38,7 +40,10 @@ const startTask = (destination: Destination, id: number): Destination => {
   return destination;
 };
 
-const recordTask = (destination: Destination, payload: any): Destination => {
+const recordTask = (
+  destination: Destination,
+  payload: Recorder
+): Destination => {
   if (destination.id === payload.id) {
     return {
       ...destination,
@@ -48,20 +53,11 @@ const recordTask = (destination: Destination, payload: any): Destination => {
   return destination;
 };
 
-const stopTask = (destination: Destination, id: number): Destination => {
-  if (destination.id === id) {
-    return {
-      ...destination,
-      isDoing: !destination.isDoing
-    };
-  }
-  return destination;
-};
-
 let idCounter: number = 1;
 
-const buildDestination = (title: string): Destination => ({
+const buildDestination = ({ title, goal }: any): Destination => ({
   title,
+  goal,
   isDoing: false,
   id: ++idCounter,
   totalTime: 0
@@ -82,7 +78,7 @@ export const destinationsReducer = reducerWithInitialState(initialState)
     (state: DestinationsState, payload: number): DestinationsState => {
       return {
         ...state,
-        destinations: state.destinations.map(it => startTask(it, payload))
+        destinations: state.destinations.map(it => toggleTask(it, payload))
       };
     }
   )
@@ -100,7 +96,7 @@ export const destinationsReducer = reducerWithInitialState(initialState)
     (state: DestinationsState, payload: number): DestinationsState => {
       return {
         ...state,
-        destinations: state.destinations.map(it => stopTask(it, payload))
+        destinations: state.destinations.map(it => toggleTask(it, payload))
       };
     }
   )

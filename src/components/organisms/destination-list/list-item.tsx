@@ -1,7 +1,9 @@
 import * as React from "react";
 import * as Media from "src/components/atoms/media";
+import Caption from "src/components/atoms/caption";
 import Title from "src/components/atoms/title";
 import Stopwatch from "src/components/organisms/stopwatch";
+import ElapsedTime from "src/components/molecules/elapsed-time";
 import * as styles from "./list-item.css";
 
 export interface ListItemProps {
@@ -9,6 +11,7 @@ export interface ListItemProps {
   isDoing: boolean;
   id: number;
   totalTime: number;
+  goal: number;
   onStart: (e: any) => any;
   onStop: (e: any) => any;
   onRecord: (e: any) => any;
@@ -22,6 +25,9 @@ const ListItem: React.SFC<ListItemProps> = props => {
     <Media.Container className={styles.item}>
       <Media.Content>
         <Title>{props.title}</Title>
+        <Caption>
+          goal: <ElapsedTime time={props.goal} />
+        </Caption>
       </Media.Content>
       <Media.Action>
         <Stopwatch

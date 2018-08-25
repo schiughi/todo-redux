@@ -1,7 +1,6 @@
 import * as moment from "moment";
 import "moment-duration-format";
 import * as React from "react";
-import Title from "src/components/atoms/title";
 import * as styles from "./styles.css";
 import classNames from "classnames";
 
@@ -26,11 +25,11 @@ const ElapsedTime: React.SFC<ElapsedTimeProps> = ({
   className,
   ...props
 }) => (
-  <Title level={5} className={classNames(styles.time, className)} {...props}>
+  <span className={classNames(styles.time, className)} {...props}>
     {moment.duration(time, unit).format(format, {
       trim: false
     })}
-  </Title>
+  </span>
 );
 
 export default ElapsedTime;
