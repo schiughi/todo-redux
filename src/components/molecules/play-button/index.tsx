@@ -4,6 +4,7 @@ import { Button } from "react-toolbox/lib/button";
 export interface PlayButtonProps {
   playing: boolean;
   onClick: (e: any) => void;
+  className?: string;
 }
 
 const PlayButton: React.StatelessComponent<PlayButtonProps> = ({

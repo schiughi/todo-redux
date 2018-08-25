@@ -32,7 +32,7 @@ const Stopwatch: React.SFC<StopwatchProps> = ({
   return (
     <div className={styles.container}>
       <PlayButton playing={isRunning} onClick={handleClick} />
-      <ElapsedTime time={time} />
+      <ElapsedTime time={time} className={styles.content} />
     </div>
   );
 };
