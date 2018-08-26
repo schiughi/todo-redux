@@ -6,6 +6,11 @@ export interface Recorder {
   time: number;
 }
 
+export interface DestinationAddForm {
+  title: string;
+  goal: number;
+}
+
 export interface Destination {
   id: number;
   title: string;
@@ -55,7 +60,10 @@ const recordTask = (
 
 let idCounter: number = 1;
 
-const buildDestination = ({ title, goal }: any): Destination => ({
+const buildDestination = ({
+  title,
+  goal
+}: DestinationAddForm): Destination => ({
   title,
   goal,
   isDoing: false,
@@ -66,7 +74,10 @@ const buildDestination = ({ title, goal }: any): Destination => ({
 export const destinationsReducer = reducerWithInitialState(initialState)
   .case(
     destinationActions.addTask,
-    (state: DestinationsState, payload: string): DestinationsState => {
+    (
+      state: DestinationsState,
+      payload: DestinationAddForm
+    ): DestinationsState => {
       return {
         ...state,
         destinations: state.destinations.concat(buildDestination(payload))
