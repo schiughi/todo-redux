@@ -14,6 +14,6 @@ export const Destinations: React.SFC<DestinationsProps> = (
   <div className={styles.container}>
     <Title>destinations</Title>
     <DestinationList {...props} />
-    <DestinationAddition />
+    <DestinationAddition onSubmit={props.onCreate} />
   </div>
 );

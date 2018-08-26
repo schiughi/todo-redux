@@ -1,23 +1,32 @@
 import * as React from "react";
+import { withFormik, InjectedFormikProps, Form } from "formik";
+import { DestinationAddForm } from "src/states/destinations-state";
 import Input from "src/components/atoms/input";
-import TimePicker from "react-toolbox/lib/time_picker";
-import withState, { InjectedProps } from "src/components/utils/with-state";
 
-interface State {
+interface FormProps {
   title?: string;
-  goal: Date;
+  goal?: number;
+  onSubmit: (entity: DestinationAddForm) => any;
 }
 
-export type Props = State & InjectedProps;
-
-const DestinationAddition = ({ title, goal, onChange }: Props) => (
-  <div>
-    <Input name="title" onChange={onChange} value={title} />
-    <TimePicker name="goal" onChange={onChange} value={goal} />
-  </div>
+const DestinationAddition: React.SFC<
+  InjectedFormikProps<FormProps, DestinationAddForm>
+> = ({ values, handleChange }) => (
+  <Form>
+    <Input
+      type="text"
+      name="title"
+      label="Title"
+      required
+      onChange={handleChange}
+      value={values.title}
+    />
+  </Form>
 );
 
-export default withState<State>({
-  title: "",
-  goal: new Date()
-})<{}>(DestinationAddition);
+export default withFormik<FormProps, DestinationAddForm>({
+  mapPropsToValues: () => ({ title: "", goal: 0 }),
+  handleSubmit: (values, { props }) => {
+    props.onSubmit(values);
+  }
+})(DestinationAddition);

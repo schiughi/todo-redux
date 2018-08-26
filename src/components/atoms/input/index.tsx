@@ -1,19 +1,17 @@
 import * as React from "react";
-import BaseInput from "react-toolbox/lib/input";
+import Base from "react-toolbox/lib/input";
 
-interface Props {
+export interface Props {
+  type: "text" | "number" | "email" | "tel";
   name: string;
-  onChange: (target: any) => void;
-  value?: string;
+  onChange: (event: React.ChangeEvent) => void;
+  value: string;
+  label?: string;
+  required?: boolean;
 }
-const Input = (props: Props) => {
-  const handleChange = (value: string) => {
-    props.onChange({
-      name: props.name,
-      value
-    });
-  };
-  return <BaseInput {...props} onChange={handleChange} />;
+const Input: React.SFC<Props> = (props: Props) => {
+  const handleChange = (value: string, event: React.ChangeEvent) =>
+    props.onChange(event);
+  return <Base {...props} onChange={handleChange} />;
 };
-
 export default Input;
