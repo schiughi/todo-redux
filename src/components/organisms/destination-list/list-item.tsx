@@ -25,7 +25,7 @@ const ListItem: React.SFC<ListItemProps> = props => {
   return (
     <Media.Container className={styles.item}>
       <Media.Avatar>
-        <Avatar style={{ backgroundColor: "deepskyblue" }} icon="grade" />
+        <Avatar style={{ backgroundColor: "deepskyblue" }} icon="star" />
       </Media.Avatar>
       <Media.Content>
         <Title>{props.title}</Title>

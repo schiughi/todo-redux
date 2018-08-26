@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Button } from "react-toolbox/lib/button";
+import Button from "src/components/atoms/button";
 
 export interface PlayButtonProps {
   playing: boolean;
