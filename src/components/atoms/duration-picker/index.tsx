@@ -1,10 +1,7 @@
 import * as React from "react";
 import * as moment from "moment";
-
-interface DurationPickerTarget {
-  name: string;
-  value: number;
-}
+import * as styles from "./styles.css";
+import { InputProps } from "src/components/atoms/interfaces";
 
 interface State {
   seconds: number;
@@ -12,10 +9,8 @@ interface State {
   hours: number;
 }
 
-export interface Props {
+export interface Props extends InputProps<number> {
   name: string;
-  value: number;
-  onChange: (event: React.ChangeEvent<DurationPickerTarget>) => any;
 }
 
 class DurationPicker extends React.Component<Props, State> {
@@ -29,26 +24,32 @@ class DurationPicker extends React.Component<Props, State> {
   }
   public render() {
     return (
-      <div>
+      <div className={styles.container}>
         <input
           type="number"
           name="hours"
           value={this.state.hours}
+          min="0"
           onChange={this.handleChange}
+          className={styles.input}
         />{" "}
         :{" "}
         <input
           type="number"
           name="minutes"
           value={this.state.minutes}
+          min="0"
           onChange={this.handleChange}
+          className={styles.input}
         />{" "}
         :{" "}
         <input
           type="number"
           name="seconds"
           value={this.state.seconds}
+          min="0"
           onChange={this.handleChange}
+          className={styles.input}
         />
       </div>
     );
@@ -68,7 +69,7 @@ class DurationPicker extends React.Component<Props, State> {
       .asSeconds();
     const newEvent = {
       ...event,
-      target: { name: this.props.name, value: changed }
+      target: { ...event.target, name: this.props.name, value: changed }
     };
     this.props.onChange(newEvent);
   };
