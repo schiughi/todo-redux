@@ -7,3 +7,8 @@
   text-align: center;
   border: 0;
 }
+
+.input:focus {
+  border-bottom: 1px solid var(--input-text-bottom-border-color);
+  outline: none;
+}
