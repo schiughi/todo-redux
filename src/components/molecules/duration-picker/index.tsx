@@ -2,6 +2,7 @@ import * as React from "react";
 import * as moment from "moment";
 import * as styles from "./styles.css";
 import { InputProps } from "src/components/atoms/interfaces";
+import Steps from "src/components/atoms/steps";
 
 interface State {
   seconds: number;
@@ -25,30 +26,33 @@ class DurationPicker extends React.Component<Props, State> {
   public render() {
     return (
       <div className={styles.container}>
-        <input
-          type="number"
+        <Steps
           name="hours"
           value={this.state.hours}
-          min="0"
+          min={0}
           onChange={this.handleChange}
+          onPlus={this.handlePlus}
+          onMinus={this.handleMinus}
           className={styles.input}
         />{" "}
         :{" "}
-        <input
-          type="number"
+        <Steps
           name="minutes"
           value={this.state.minutes}
-          min="0"
+          min={0}
           onChange={this.handleChange}
+          onPlus={this.handlePlus}
+          onMinus={this.handleMinus}
           className={styles.input}
         />{" "}
         :{" "}
-        <input
-          type="number"
+        <Steps
           name="seconds"
           value={this.state.seconds}
-          min="0"
+          min={0}
           onChange={this.handleChange}
+          onPlus={this.handlePlus}
+          onMinus={this.handleMinus}
           className={styles.input}
         />
       </div>
@@ -73,6 +77,34 @@ class DurationPicker extends React.Component<Props, State> {
     };
     this.props.onChange(newEvent);
   };
+
+  private handlePlus = (event: React.MouseEvent, name: any, step: number) => {
+    const changed: moment.Duration = this.duration.add(step, name);
+    this.setState({
+      ...this.state,
+      seconds: changed.seconds(),
+      minutes: changed.minutes(),
+      hours: changed.hours()
+    });
+  };
+
+  private handleMinus = (event: React.MouseEvent, name: any, step: number) => {
+    const changed: moment.Duration = this.duration.subtract(step, name);
+    this.setState({
+      ...this.state,
+      seconds: changed.seconds(),
+      minutes: changed.minutes(),
+      hours: changed.hours()
+    });
+  };
+
+  private get duration() {
+    return moment.duration({
+      seconds: this.state.seconds,
+      minutes: this.state.minutes,
+      hours: this.state.hours
+    });
+  }
 }
 
 export default DurationPicker;
