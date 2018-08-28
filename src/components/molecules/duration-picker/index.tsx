@@ -33,7 +33,6 @@ class DurationPicker extends React.Component<Props, State> {
           onChange={this.handleChange}
           onPlus={this.handlePlus}
           onMinus={this.handleMinus}
-          className={styles.input}
         />{" "}
         :{" "}
         <Steps
@@ -43,7 +42,6 @@ class DurationPicker extends React.Component<Props, State> {
           onChange={this.handleChange}
           onPlus={this.handlePlus}
           onMinus={this.handleMinus}
-          className={styles.input}
         />{" "}
         :{" "}
         <Steps
@@ -53,7 +51,6 @@ class DurationPicker extends React.Component<Props, State> {
           onChange={this.handleChange}
           onPlus={this.handlePlus}
           onMinus={this.handleMinus}
-          className={styles.input}
         />
       </div>
     );

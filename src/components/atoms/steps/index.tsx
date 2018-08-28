@@ -46,7 +46,13 @@ const Steps: React.SFC<Props> = ({
       <span className={styles.button} role="button" onClick={handlePlus}>
         +
       </span>
-      <input type="number" onChange={handleChange} value={value} {...props} />
+      <input
+        type="number"
+        onChange={handleChange}
+        value={value}
+        {...props}
+        className={styles.input}
+      />
       <span className={styles.button} role="button" onClick={handleMinus}>
         -
       </span>
