@@ -2,7 +2,7 @@ import * as React from "react";
 import * as moment from "moment";
 import * as styles from "./styles.css";
 import { InputProps } from "src/components/atoms/interfaces";
-import Steps from "src/components/atoms/steps";
+import Counter from "src/components/atoms/counter";
 
 interface State {
   seconds: number;
@@ -26,7 +26,7 @@ class DurationPicker extends React.Component<Props, State> {
   public render() {
     return (
       <div className={styles.container}>
-        <Steps
+        <Counter
           name="hours"
           value={this.state.hours}
           min={0}
@@ -34,7 +34,7 @@ class DurationPicker extends React.Component<Props, State> {
           className={styles.counter}
         />{" "}
         :{" "}
-        <Steps
+        <Counter
           name="minutes"
           value={this.state.minutes}
           min={0}
@@ -42,7 +42,7 @@ class DurationPicker extends React.Component<Props, State> {
           className={styles.counter}
         />{" "}
         :{" "}
-        <Steps
+        <Counter
           name="seconds"
           value={this.state.seconds}
           min={0}
@@ -52,6 +52,7 @@ class DurationPicker extends React.Component<Props, State> {
       </div>
     );
   }
+
   private handleChange = (name: string, value: number) => {
     const changed: moment.Duration = moment.duration({
       seconds: this.state.seconds,
@@ -62,7 +63,7 @@ class DurationPicker extends React.Component<Props, State> {
     this.setState({
       seconds: changed.seconds(),
       minutes: changed.minutes(),
-      hours: changed.hours()
+      hours: Math.floor(changed.asHours())
     });
     this.props.onChange(this.props.name, changed.asSeconds());
   };

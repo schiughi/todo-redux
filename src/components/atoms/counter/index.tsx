@@ -9,7 +9,7 @@ export interface Props extends InputProps<number> {
   step?: number;
 }
 
-const Steps: React.SFC<Props> = ({
+const Counter: React.SFC<Props> = ({
   onChange,
   value,
   step = 1,
@@ -59,4 +59,4 @@ const Steps: React.SFC<Props> = ({
   );
 };
 
-export default Steps;
+export default Counter;
