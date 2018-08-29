@@ -1,4 +1,5 @@
 import * as React from "react";
+import classNames from "classnames";
 import * as styles from "./styles.css";
 import { InputProps } from "src/components/atoms/interfaces";
 
@@ -8,7 +9,13 @@ export interface Props extends InputProps<number> {
   step?: number;
 }
 
-const Steps: React.SFC<Props> = ({ onChange, value, step = 1, ...props }) => {
+const Steps: React.SFC<Props> = ({
+  onChange,
+  value,
+  step = 1,
+  className,
+  ...props
+}) => {
   const handleChange = (event: any) => {
     onChange(props.name, +event.target.value);
   };
@@ -26,8 +33,12 @@ const Steps: React.SFC<Props> = ({ onChange, value, step = 1, ...props }) => {
     onChange(props.name, value - step);
   };
   return (
-    <div>
-      <span className={styles.button} role="button" onClick={handlePlus}>
+    <div className={classNames(styles.container, className)}>
+      <span
+        className={classNames(styles.button, styles.plus)}
+        role="button"
+        onClick={handlePlus}
+      >
         +
       </span>
       <input
@@ -37,7 +48,11 @@ const Steps: React.SFC<Props> = ({ onChange, value, step = 1, ...props }) => {
         {...props}
         className={styles.input}
       />
-      <span className={styles.button} role="button" onClick={handleMinus}>
+      <span
+        className={classNames(styles.button, styles.minus)}
+        role="button"
+        onClick={handleMinus}
+      >
         -
       </span>
     </div>

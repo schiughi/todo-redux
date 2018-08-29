@@ -1,16 +1,37 @@
 .button {
   cursor: pointer;
+  border: 1px solid #f5f7fa;
+  background-color: #f5f7fa;
+  padding: 2px;
+  text-align: center;
+}
+
+.plus {
+  border-radius: 4px 4px 0 0;
+}
+
+.minus {
+  border-radius: 0 0 4px 4px;
+}
+
+.button:hover {
+  border-color: aqua;
 }
 
 .input {
   text-align: center;
-  border: 0;
+  border: 1px solid #f5f7fa;
 }
 
 .input::-webkit-inner-spin-button {
   -webkit-appearance: none;
 }
 .input:focus {
-  border-bottom: 1px solid var(--input-text-bottom-border-color);
   outline: none;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

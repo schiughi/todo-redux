@@ -31,6 +31,7 @@ class DurationPicker extends React.Component<Props, State> {
           value={this.state.hours}
           min={0}
           onChange={this.handleChange}
+          className={styles.counter}
         />{" "}
         :{" "}
         <Steps
@@ -38,6 +39,7 @@ class DurationPicker extends React.Component<Props, State> {
           value={this.state.minutes}
           min={0}
           onChange={this.handleChange}
+          className={styles.counter}
         />{" "}
         :{" "}
         <Steps
@@ -45,6 +47,7 @@ class DurationPicker extends React.Component<Props, State> {
           value={this.state.seconds}
           min={0}
           onChange={this.handleChange}
+          className={styles.counter}
         />
       </div>
     );
