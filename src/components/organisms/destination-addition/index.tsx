@@ -13,17 +13,18 @@ interface FormProps {
 
 const DestinationAddition: React.SFC<
   InjectedFormikProps<FormProps, DestinationAddForm>
-> = ({ values, handleChange, handleSubmit }) => (
+> = ({ values, handleSubmit, setFieldValue }) => (
   <Form>
     <Input
       type="text"
       name="title"
       label="Title"
       required
-      onChange={handleChange}
+      onChange={setFieldValue}
       value={values.title}
     />
-    <DurationPicker name="goal" value={values.goal} onChange={handleChange} />
+    <DurationPicker name="goal" value={values.goal} onChange={setFieldValue} />
+    {JSON.stringify(values)}
     <Button icon="send" onClick={handleSubmit} />
   </Form>
 );

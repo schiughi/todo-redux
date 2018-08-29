@@ -31,8 +31,6 @@ class DurationPicker extends React.Component<Props, State> {
           value={this.state.hours}
           min={0}
           onChange={this.handleChange}
-          onPlus={this.handlePlus}
-          onMinus={this.handleMinus}
         />{" "}
         :{" "}
         <Steps
@@ -40,8 +38,6 @@ class DurationPicker extends React.Component<Props, State> {
           value={this.state.minutes}
           min={0}
           onChange={this.handleChange}
-          onPlus={this.handlePlus}
-          onMinus={this.handleMinus}
         />{" "}
         :{" "}
         <Steps
@@ -49,59 +45,24 @@ class DurationPicker extends React.Component<Props, State> {
           value={this.state.seconds}
           min={0}
           onChange={this.handleChange}
-          onPlus={this.handlePlus}
-          onMinus={this.handleMinus}
         />
       </div>
     );
   }
-  private handleChange = (event: any) => {
-    this.setState({
-      ...this.state,
-      [event.target.name]: +event.target.value
-    });
-    const changed: number = moment
-      .duration({
-        seconds: this.state.seconds,
-        minutes: this.state.minutes,
-        hours: this.state.hours,
-        [event.target.name]: +event.target.value
-      })
-      .asSeconds();
-    const newEvent = {
-      ...event,
-      target: { ...event.target, name: this.props.name, value: changed }
-    };
-    this.props.onChange(newEvent);
-  };
-
-  private handlePlus = (event: React.MouseEvent, name: any, step: number) => {
-    const changed: moment.Duration = this.duration.add(step, name);
-    this.setState({
-      ...this.state,
-      seconds: changed.seconds(),
-      minutes: changed.minutes(),
-      hours: changed.hours()
-    });
-  };
-
-  private handleMinus = (event: React.MouseEvent, name: any, step: number) => {
-    const changed: moment.Duration = this.duration.subtract(step, name);
-    this.setState({
-      ...this.state,
-      seconds: changed.seconds(),
-      minutes: changed.minutes(),
-      hours: changed.hours()
-    });
-  };
-
-  private get duration() {
-    return moment.duration({
+  private handleChange = (name: string, value: number) => {
+    const changed: moment.Duration = moment.duration({
       seconds: this.state.seconds,
       minutes: this.state.minutes,
-      hours: this.state.hours
+      hours: this.state.hours,
+      [name]: value
     });
-  }
+    this.setState({
+      seconds: changed.seconds(),
+      minutes: changed.minutes(),
+      hours: changed.hours()
+    });
+    this.props.onChange(this.props.name, changed.asSeconds());
+  };
 }
 
 export default DurationPicker;

@@ -3,43 +3,27 @@ import * as styles from "./styles.css";
 import { InputProps } from "src/components/atoms/interfaces";
 
 export interface Props extends InputProps<number> {
-  onPlus: (event: React.MouseEvent, name: string, value: number) => any;
-  onMinus: (event: React.MouseEvent, name: string, value: number) => any;
   min?: number;
   max?: number;
   step?: number;
 }
 
-const Steps: React.SFC<Props> = ({
-  onChange,
-  onPlus,
-  onMinus,
-  value,
-  step = 1,
-  ...props
-}) => {
+const Steps: React.SFC<Props> = ({ onChange, value, step = 1, ...props }) => {
   const handleChange = (event: any) => {
-    const newEvent = {
-      ...event,
-      target: {
-        ...event.target,
-        [event.target.name]: +event.target.value
-      }
-    };
-    onChange(newEvent);
+    onChange(props.name, +event.target.value);
   };
 
   const handlePlus = (event: React.MouseEvent) => {
     if (props.max != null && value >= props.max) {
       return;
     }
-    onPlus(event, props.name, step);
+    onChange(props.name, value + step);
   };
   const handleMinus = (event: React.MouseEvent) => {
     if (props.min != null && value <= props.min) {
       return;
     }
-    onMinus(event, props.name, step);
+    onChange(props.name, value - step);
   };
   return (
     <div>

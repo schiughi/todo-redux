@@ -9,10 +9,7 @@ export interface Props extends InputProps<string> {
   required?: boolean;
 }
 const Input: React.SFC<Props> = (props: Props) => {
-  const handleChange = (
-    value: string,
-    event: React.ChangeEvent<HTMLInputElement>
-  ) => props.onChange(event);
+  const handleChange = (value: string) => props.onChange(props.name, value);
   return <Base {...props} onChange={handleChange} />;
 };
 export default Input;

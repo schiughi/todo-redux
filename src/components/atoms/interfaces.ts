@@ -7,5 +7,5 @@ export interface InputProps<T> {
   value: T;
   name: string;
   className?: string;
-  onChange: (event: React.ChangeEvent<EventTarget<T>>) => any;
+  onChange: (field: string, value: T) => any;
 }
