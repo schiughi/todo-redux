@@ -23,7 +23,12 @@ const DestinationAddition: React.SFC<
       onChange={setFieldValue}
       value={values.title}
     />
-    <DurationPicker name="goal" value={values.goal} onChange={setFieldValue} />
+    <DurationPicker
+      name="goal"
+      label="Goal"
+      value={values.goal}
+      onChange={setFieldValue}
+    />
     {JSON.stringify(values)}
     <Button icon="send" onClick={handleSubmit} />
   </Form>

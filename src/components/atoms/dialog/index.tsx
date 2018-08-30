@@ -1,14 +1,5 @@
 import * as React from "react";
-import Base from "react-toolbox/lib/dialog";
-
-export interface DialogProps {
-  active: boolean;
-  children: React.ReactNode;
-  className?: string;
-  type?: "small" | "normal" | "large" | "fullscreen";
-  title?: string;
-  onOverlayClick?: () => any;
-}
+import Base, { DialogProps } from "react-toolbox/lib/dialog";
 
 const Dialog: React.SFC<DialogProps> = ({ active, children, ...props }) => (
   <Base active={active} {...props}>
