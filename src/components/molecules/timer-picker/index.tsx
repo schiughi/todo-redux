@@ -2,7 +2,7 @@ import * as React from "react";
 import * as moment from "moment";
 import "moment-duration-format";
 import * as styles from "./styles.css";
-import { InputProps } from "src/components/interfaces";
+import { InputProps } from "src/components";
 import Input from "src/components/atoms/input";
 import Counter from "src/components/atoms/counter";
 import Dialog from "src/components/atoms/dialog";
@@ -19,7 +19,7 @@ export interface Props extends InputProps<number> {
   label?: string;
 }
 
-class DurationPicker extends React.Component<Props, State> {
+class TimerPicker extends React.Component<Props, State> {
   constructor(props: Props) {
     super(props);
     this.state = {
@@ -113,4 +113,4 @@ class DurationPicker extends React.Component<Props, State> {
   }
 }
 
-export default DurationPicker;
+export default TimerPicker;

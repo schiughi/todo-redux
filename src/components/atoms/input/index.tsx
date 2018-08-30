@@ -1,6 +1,6 @@
 import * as React from "react";
 import Base, { InputProps as BaseProps } from "react-toolbox/lib/input";
-import { InputProps as CommonProps } from "src/components/interfaces";
+import { InputProps as CommonProps } from "src/components";
 
 export type InputProps = CommonProps<string> & BaseProps;
 

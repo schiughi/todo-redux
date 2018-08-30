@@ -2,7 +2,7 @@ import * as React from "react";
 import { withFormik, InjectedFormikProps, Form } from "formik";
 import { DestinationAddForm } from "src/states/destinations-state";
 import Input from "src/components/atoms/input";
-import DurationPicker from "src/components/molecules/duration-picker";
+import TimerPicker from "src/components/molecules/timer-picker";
 import Button from "src/components/atoms/button";
 
 interface FormProps {
@@ -23,7 +23,7 @@ const DestinationAddition: React.SFC<
       onChange={setFieldValue}
       value={values.title}
     />
-    <DurationPicker
+    <TimerPicker
       name="goal"
       label="Goal"
       value={values.goal}

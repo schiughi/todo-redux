@@ -1,7 +1,7 @@
 import * as React from "react";
 import classNames from "classnames";
 import * as styles from "./styles.css";
-import { InputProps } from "src/components/interfaces";
+import { InputProps } from "src/components";
 
 export interface Props extends InputProps<number> {
   min?: number;
