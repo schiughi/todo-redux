@@ -43,6 +43,7 @@ class DurationPicker extends React.Component<Props, State> {
           active={this.state.isActive}
           onOverlayClick={this.toggleDialog}
           actions={this.actions}
+          type="small"
         >
           <div className={styles.container}>
             <Counter
