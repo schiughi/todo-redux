@@ -1,6 +1,6 @@
 import * as React from "react";
 import Base from "react-toolbox/lib/input";
-import { InputProps } from "src/components/atoms/interfaces";
+import { InputProps } from "src/components/interfaces";
 
 export interface Props extends InputProps<string> {
   type: "text" | "number" | "email" | "tel";

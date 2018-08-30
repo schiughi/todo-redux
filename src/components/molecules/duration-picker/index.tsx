@@ -1,7 +1,7 @@
 import * as React from "react";
 import * as moment from "moment";
 import * as styles from "./styles.css";
-import { InputProps } from "src/components/atoms/interfaces";
+import { InputProps } from "src/components/interfaces";
 import Counter from "src/components/atoms/counter";
 
 interface State {
