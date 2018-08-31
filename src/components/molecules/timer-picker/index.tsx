@@ -92,8 +92,12 @@ class TimerPicker extends React.Component<Props, State> {
   };
 
   private toggleDialog = () => {
+    const duration = moment.duration(this.props.value, "seconds");
     this.setState({
       ...this.state,
+      seconds: duration.seconds(),
+      minutes: duration.minutes(),
+      hours: Math.floor(duration.asHours()),
       isActive: !this.state.isActive
     });
   };
@@ -104,11 +108,7 @@ class TimerPicker extends React.Component<Props, State> {
 
   private get formatedDuration(): string {
     return moment
-      .duration({
-        seconds: this.state.seconds,
-        minutes: this.state.minutes,
-        hours: this.state.hours
-      })
+      .duration(this.props.value, "seconds")
       .format("HH:mm:ss", { trim: false });
   }
 }
