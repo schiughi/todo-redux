@@ -1,0 +1,11 @@
+.title {
+  cursor: pointer;
+}
+
+.body {
+  display: none;
+}
+
+.isVisible {
+  display: block;
+}
